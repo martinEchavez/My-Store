@@ -21,6 +21,11 @@
   },
   "dependencies": {
     "@hapi/boom": "^9.1.4",
-    "express": "^4.17.2"
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "joi": "^17.6.0"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }

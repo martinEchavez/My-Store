@@ -1,16 +1,19 @@
 const express = require('express');
+const cors = require('cors');
+const PORT = process.env.PORT || 4000;
+const app = express();
+
 const {
   logErrors,
   errorHandler,
   boomErrorHandler,
 } = require('./middlewares/error.handler');
-const PORT = 4000;
-const app = express();
 
 const router = require('./routes');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 // Routes
 router(app);
