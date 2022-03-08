@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const PORT = process.env.PORT || 4000;
+const { config: { port } } = require('./config');
 const app = express();
 
 const {
@@ -23,6 +23,6 @@ app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log('Server on PORT', PORT);
+app.listen(port, () => {
+  console.log('Server on PORT', port);
 });

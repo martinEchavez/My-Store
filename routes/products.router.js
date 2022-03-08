@@ -10,9 +10,9 @@ const {
 
 const service = new ProductsServices();
 
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
-    const products = service.find();
+    const products = await service.find();
     res.status(200).json(products);
   } catch (error) {
     next(error);
