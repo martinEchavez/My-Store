@@ -7,7 +7,7 @@ const UserSchema = {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
   },
   email: {
     allowNull: false,
@@ -36,11 +36,13 @@ class User extends Model {
       sequelize,
       tableName: USER_TABLE,
       modelName: 'User',
-      timestamps: false
+      timestamps: false,
     }
   }
 }
 
 module.exports = {
-  USER_TABLE, UserSchema, User
+  USER_TABLE,
+  UserSchema,
+  User
 }
