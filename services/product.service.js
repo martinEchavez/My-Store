@@ -1,6 +1,5 @@
 const { faker } = require('@faker-js/faker');
 const boom = require('@hapi/boom');
-const sequelize = require('../libs/sequelize');
 const { models } = require('./../libs/sequelize');
 
 class ProductsServices {
@@ -35,39 +34,16 @@ class ProductsServices {
     return await models.Product.findAll()
   }
 
-  findOne(id) {
-    const productFound = this.products.find((product) => product.id === id);
-    if (!productFound) {
-      throw boom.notFound('Product Not Found');
-    }
-    if (productFound.isBlock) {
-      throw boom.conflict('Product is block');
-    }
-    return productFound;
+  async findOne(id) {
+    return await models.Product.findByPk(id);
   }
 
   update(id, changes) {
-    const index = this.products.findIndex((product) => product.id === id);
-    if (index === -1) {
-      throw boom.notFound('Product Not Found');
-    }
 
-    const product = this.products[index];
-    this.products[index] = {
-      ...product,
-      ...changes,
-    };
-    return this.products[index];
   }
 
   delete(id) {
-    const index = this.products.findIndex((product) => product.id === id);
-    if (index === -1) {
-      throw boom.notFound('Product Not Found');
-    }
 
-    this.products.splice(index, 1);
-    return { id };
   }
 }
 

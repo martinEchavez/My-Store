@@ -1,16 +1,16 @@
 const { DataTypes, Model, Sequelize } = require('sequelize');
 
-const PRODUCT_TABLE = 'products';
+const CATEGORY_TABLE = 'categories';
 
-const ProductSchema = {
-  productId: {
+const CategorySchema = {
+  categoryId: {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
     type: DataTypes.INTEGER,
     field: 'id',
   },
-  productName: {
+  categoryName: {
     allowNull: false,
     type: DataTypes.STRING,
     field: 'name',
@@ -19,22 +19,6 @@ const ProductSchema = {
     allowNull: true,
     type: DataTypes.STRING,
     field: 'description',
-  },
-  price: {
-    allowNull: false,
-    type: DataTypes.DECIMAL,
-    field: 'price'
-  },
-  quantity: {
-    allowNull: false,
-    type: DataTypes.INTEGER,
-    field: 'quantity'
-  },
-  status: {
-    allowNull: false,
-    type: DataTypes.CHAR,
-    field: 'status',
-    defaultValue: 'active',
   },
   createAt: {
     allowNull: false,
@@ -50,7 +34,7 @@ const ProductSchema = {
   }
 }
 
-class Product extends Model {
+class Category extends Model {
   static associate() {
     // associate
   }
@@ -58,15 +42,15 @@ class Product extends Model {
   static config(sequelize) {
     return {
       sequelize,
-      tableName: PRODUCT_TABLE,
-      modelName: 'Product',
+      tableName: CATEGORY_TABLE,
+      modelName: 'Category',
       timestamps: false,
     }
   }
 }
 
 module.exports = {
-  PRODUCT_TABLE,
-  ProductSchema,
-  Product,
+  CATEGORY_TABLE,
+  CategorySchema,
+  Category,
 }

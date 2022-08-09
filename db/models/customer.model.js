@@ -1,40 +1,54 @@
 const { DataTypes, Model, Sequelize } = require('sequelize');
 
-const PRODUCT_TABLE = 'products';
+const CUSTOMER_TABLE = 'customers';
 
-const ProductSchema = {
-  productId: {
+const CustomerSchema = {
+  customerId: {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
     type: DataTypes.INTEGER,
     field: 'id',
   },
-  productName: {
+  firstName: {
     allowNull: false,
     type: DataTypes.STRING,
-    field: 'name',
+    field: 'first_name',
   },
-  description: {
+  lastName: {
+    allowNull: false,
+    type: DataTypes.STRING,
+    field: 'last_name',
+  },
+  phone: {
     allowNull: true,
     type: DataTypes.STRING,
-    field: 'description',
+    field: 'phone',
   },
-  price: {
+  email: {
     allowNull: false,
-    type: DataTypes.DECIMAL,
-    field: 'price'
+    type: DataTypes.STRING,
+    field: 'email'
   },
-  quantity: {
-    allowNull: false,
-    type: DataTypes.INTEGER,
-    field: 'quantity'
-  },
-  status: {
+  country: {
     allowNull: false,
     type: DataTypes.CHAR,
-    field: 'status',
-    defaultValue: 'active',
+    field: 'country'
+  },
+  city: {
+    allowNull: false,
+    type: DataTypes.STRING,
+    field: 'city'
+  },
+  state: {
+    allowNull: false,
+    type: DataTypes.STRING,
+    field: 'state'
+  },
+  zipCode: {
+    allowNull: false,
+    type: DataTypes.STRING,
+    field: 'zip_code'
   },
   createAt: {
     allowNull: false,
@@ -50,7 +64,7 @@ const ProductSchema = {
   }
 }
 
-class Product extends Model {
+class Customer extends Model {
   static associate() {
     // associate
   }
@@ -58,15 +72,15 @@ class Product extends Model {
   static config(sequelize) {
     return {
       sequelize,
-      tableName: PRODUCT_TABLE,
-      modelName: 'Product',
+      tableName: CUSTOMER_TABLE,
+      modelName: 'Customer',
       timestamps: false,
     }
   }
 }
 
 module.exports = {
-  PRODUCT_TABLE,
-  ProductSchema,
-  Product,
+  CUSTOMER_TABLE,
+  CustomerSchema,
+  Customer,
 }

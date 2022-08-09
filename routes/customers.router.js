@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const UserServices = require('./../services/user.service');
+const CustomerServices = require('../services/customer.service');
 
-const service = new UserServices();
+const service = new CustomerServices();
 
 router.get('/', async (req, res) => {
   try {
-    const users = await service.findUsers();
-    res.status(200).json(users);
+    const customers = await service.findCustomers();
+    res.status(200).json(customers);
   } catch (error) {
     console.log(error)
   }
@@ -16,8 +16,8 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params
-    const user = await service.findUser(id)
-    res.status(200).json(user);
+    const customer = await service.findCustomer(id)
+    res.status(200).json(customer);
   } catch (error) {
     console.log(error)
   }
